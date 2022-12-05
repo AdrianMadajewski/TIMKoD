@@ -1,1 +1,3 @@
-# Teoria informacji i metody kompresji danych - laboratorium
+# TIMKoD
+
+Teoria informacji i metody kompresji danych - laboratorium
