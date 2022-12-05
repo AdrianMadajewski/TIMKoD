@@ -1,0 +1,145 @@
+lewy okrag - H(X)
+prawy okrag - H(Y)
+lewy srodek - H(X|Y)
+prawy srodek - H(Y|X)
+srodek - I(X, Y)
+gora srodek - H(X, Y)
+
+cw 6.
+1. F
+2. P
+3. P
+4. F
+5. P
+6. P
+7. F
+8. P
+
+* Zadanie 1
+
+dwie 6-scienne kostki (niezalezne rzuty X i Y)
+H(X, Y) = H(X) + H(Y)
+
+rozklad prawdopodobienstwa lacznego = 
+P(X, Y)     1   2    3    4    5    6      P(X)
+1         1/36 1/36 1/36 1/36 1/36 1/36 => 1/6
+2          ..........................   => 1/6
+3          ..........................   => 1/6
+4          ..........................   => 1/6
+5          ..........................   => 1/6
+6          ..........................   => 1/6
+P(Y)      1/6 1/6 1/6 1/6 1/6 1/6
+
+Tabelka z prawdopodobienstwem lacznym
+
+Bezposrednio ze wzoru na entropie laczna:
+H(X, Y) = -(36 * 1/36 * log2(1/36)) ~= 5.17
+
+Odzielnie z wlasnosci:
+H(X, Y) = H(X) + H(Y)
+H(X, Y) = -(6 * 1/6 * log2(1/6) + -(6 * 1/6 * log2(1/6)) = 2.585 + 2.585 = 5.17
+
+Informacja wzajemna:
+I(X, Y) = H(X) + H(Y) - H(X, Y) = 0
+
+* Zadanie 2
+zwiazane kwantowo - 2 rzut jest zawsze taki sam
+
+W tabelce z prawdopodobienstwem lacznm po przekatnej wszedzie bedzie 1/6 a w innych komorkach beda 0 prawdopodobienstwa.
+
+H(X, Y) = -(6 * 1/6 * log2(1/6)) + 30 * 0 * log2(0) -> log2(0) jest undefined ale przyjmuje ze jest = 0
+H(X, Y) = 2.85 bo tylko ten pierwszy czlon (drugi sie zeruje)
+
+H(X, Y) = H(X) (2.85) + H(Y) (0) = 2.85 - nie dziala bo zmienne te sa zalezne od siebie
+I(X, Y) = 2 * 2.85 - 2.85 = 2.85
+
+* Zadanie 4
+        Y = 0   Y = 1
+X = 0   2/8     1/8     3/8
+X = 1   1/8     4/8     5/8 
+        3/8     5/8
+
+Rozklad przegowy jest taki sam dla jednej i dla drugiej zmiennej
+
+H(X) = H(Y) = -(3/8 * log2(3/8)) + -(5/8 * log2(5/8)) = 0.95
+H(X, Y) = -(2/8* log2(2/8) + 1/8 * log2(1/8) +  1/8 * log2(1/8) + 4/8 * log2(4/8)) = 1.75
+
+Entropia warunkowa (r=2 typowo dla nas)
+
+H(X|Y) = - sum(p(x, y) * log_r{p(x|y)})
+
+Tabelka dla warunkowego to jest tabelka z brzegowego podzielona przez to wyszlo z brzegowego:
+
+P(Y|X) X = 0    Y = 1
+X = 0   2/3      1/3
+Y = 1   1/5      4/5
+
+H(X|Y) = -(2/8 * log(2/3) + 1/8 * log(1/3) + 1/8 * log(1/5) + 4/8 * log(4/5)) = 0.8
+I(X, Y) = 2 * 0.95 - 1.75 = 0.15
+
+PRZYKLAD entropii z jezykiem angielskim na przykladzie slowa "bananas"
+
+rozklad liter:
+b: 1/7
+a: 3/7
+n: 2/7
+s: 1/7
+
+H(X) = entropy([1/7, 3/7, 2/7, 1/7]) = 1.84
+
+Entropia pierwszego rzedu - wystepowanie jednego znaku po ustalonym poprzednim znaku - wystapienie digramu w probce
+Prawdopodbienstwo digramu - ze np. a wystapilo po b
+Entropia drugiego rzedu - laczne wystapienie trigramu 
+Prawdopodobienstwo warunkowe - wystapienie np. ab{c} po ab
+
+Wszystkich n-gramow = liczba_liter_w_slowie - rzad_entropii = 6 (dla bananas)
+ba: 1
+am: 2
+na: 2
+as: 1
+
+P(ba) = 1/6
+P(am) = 2/6
+P(na) = 2/6
+P(as) = 1/6
+
+b: {a: 1} P(a|b) = 1
+a: {n: 2, s:1} P(n|a) = 2/3, P(s|a) = 1/3
+n: {a: 2} P(a|n) = 1
+s: {} 
+
+H(Y|X) = -(1/6 * log(1) + 2/6 * log(2/3) + 2/6 * log(1) + 1/6 * log(1/3)) = 0.46
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

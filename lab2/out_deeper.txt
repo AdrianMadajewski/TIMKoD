@@ -1,0 +1,1 @@
+probability of the model given the data note that in both of those examples those quantities would be maximized rather than minimized tasks that fall within the paradigm of reinforcement learning are control problems games and other sequential decision making tasks learning algorithms training a neural network model essentially means selecting one model
