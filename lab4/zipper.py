@@ -123,7 +123,7 @@ def main():
     code_dict, _ = create(letters_dictionary)
     encoded = encode(code_dict, content)
 
-    #Save
+    # Save
     save(code_dict, encoded, directory_name)
 
     # Load
@@ -131,24 +131,27 @@ def main():
     decoded = decode(encoded_content, loaded_code_dictionary, loaded_code_length)
 
     # Stats
-    en_size, k_size, o_size = calculate_sizes(directory_name, file_name)
+    encode_size, key_size, file_size = calculate_sizes(directory_name, file_name)
 
-    sum_size = k_size + en_size
-    print('Original file -> ' + file_name)
-    print('File size     -> ' + str(o_size) + ' [bytes]')
+    sum_size = key_size + encode_size
+    print(f'Original file: "{file_name}"')
+    print(f'File size: {file_size} [bytes]')
 
-    print('Encoded size:')
-    print('\tEncoded   -> ' + str(en_size) + '\t[bytes]')
-    print('\tKey       -> ' + str(k_size) + '\t[bytes]')
-    print('\tALL       -> ' + str(sum_size) + '\t[bytes]')
+    print(f'Encoded size: {encode_size} [bytes]')
+    print(f'Key size: {key_size} [bytes]')
+    print(f'All size: {sum_size} [bytes]')
 
-    print('Compare files')
+    print('Compare files check')
+
+    compression_ratio = round(file_size / sum_size, 2)
+    space_saving = round(1 - sum_size / file_size, 2)
+
     if decoded == content:
-        print('\tEquality correct ✓')
-        print('\tCompression Ratio -> ' + str(round(o_size / sum_size, 2)))
-        print('\tSpace savings     -> ' + str(round(1 - sum_size / o_size, 2)))
+        print('Equal == true (✓)')
+        print(f'Compression ratio: {compression_ratio}')
+        print(f'Space saving: {space_saving}')
     else:
-        print('\tContent =/= Decoded(Encoded(Content))')
+        print('Content != Decoded(Encoded(Content))')
 
         print(content)
         print('\n\n--------\n\n')
